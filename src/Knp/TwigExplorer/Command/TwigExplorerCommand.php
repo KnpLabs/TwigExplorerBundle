@@ -24,7 +24,7 @@ class TwigExplorerCommand extends ContainerAwareCommand
         $extensions = $this->getContainer()->get('knp.twig_explorer.twig.extension_container');
         $data = $this->compile($extensions);
 
-        if (null !== $q = $input->getArgument('query')) {
+        if (null !== $q = $input->getArgument('query') && !empty($q)) {
             $data = $this->filter($q, $data);
         }
 
