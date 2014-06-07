@@ -1,11 +1,10 @@
 Installation:
 =============
-####1) Composer
+####Composer
 ```bash
 composer require --dev knplabs/twig-explorer-bundle dev-master
 ```
-
-####2.) AppKernel
+####AppKernel
 ```php
 <?php
 
@@ -23,10 +22,8 @@ public function registerBundles()
     // ...
 }
 ```
-
 Usage
 =====
-
 ```bash
 Usage:
  knp:twig:explorer [query]
@@ -50,12 +47,11 @@ Options:
 
 List all filters/functions:
 ======
-
-####Command:
+####Command
 ```bash
 php app/console knp:twig:explorer
 ```
-####Result:
+####Result
 ```
  Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension : 
  | Functions               | Filters                           | Token Parsers        |
@@ -105,15 +101,13 @@ php app/console knp:twig:explorer
  #...
 
 ```
-
 Search some filters/functions:
 ======
-
-####Command:
+####Command
 ```bash
 php app/console knp:twig:explorer form
 ```
-####Result:
+####Result
 ```
  Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension :  None 
 
