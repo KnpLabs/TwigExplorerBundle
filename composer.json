@@ -1,0 +1,27 @@
+{
+    "name": "knplabs/twig-explorer-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PedroTroller",
+            "email": "plazanet.pierre@gmail.com"
+        },
+        {
+            "name":     "Knplabs",
+            "homepage": "http://knplabs.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "symfony/symfony": "~2.4"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2@dev"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "Knp\\TwigExplorer": "src/" }
+    },
+}
