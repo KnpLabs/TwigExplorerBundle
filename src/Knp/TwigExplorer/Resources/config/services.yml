@@ -2,9 +2,9 @@ parameters:
     knp.twig_explorer.twig.string_extension.class: Knp\TwigExplorer\Twig\StringExtension
     knp.twig_explorer.twig.extension_container.class: Knp\TwigExplorer\Twig\ExtensionContainer
     knp.twig_explorer.name.resolver_registry.class: Knp\TwigExplorer\Name\ResolverRegistry
-    knp.twig_explorer.name.simple_filter_resolver.class: Knp\TwigExplorer\Name\SimpleFilterResolver
-    knp.twig_explorer.name.filter_method_resolver.class: Knp\TwigExplorer\Name\FilterMethodResolver
-    knp.twig_explorer.name.trans_token_resolver.class: Knp\TwigExplorer\Name\TransTokenResolver
+    knp.twig_explorer.name.by_key_resolver.class: Knp\TwigExplorer\Name\ByKeyResolver
+    knp.twig_explorer.name.by_name_resolver.class: Knp\TwigExplorer\Name\ByNameResolver
+    knp.twig_explorer.name.token_parser_resolver.class: Knp\TwigExplorer\Name\TokenParserResolver
 
 services:
     knp.twig_explorer.twig.string_extension:
@@ -18,17 +18,17 @@ services:
     knp.twig_explorer.name.resolver_registry:
         class: %knp.twig_explorer.name.resolver_registry.class%
 
-    knp.twig_explorer.name.simple_filter_resolver:
-        class: %knp.twig_explorer.name.simple_filter_resolver.class%
+    knp.twig_explorer.name.by_key_resolver:
+        class: %knp.twig_explorer.name.by_key_resolver.class%
         tags:
             - { name: knp.twig_explorer.name_resolver }
 
-    knp.twig_explorer.name.filter_method_resolver:
-        class: %knp.twig_explorer.name.filter_method_resolver.class%
+    knp.twig_explorer.name.by_name_resolver:
+        class: %knp.twig_explorer.name.by_name_resolver.class%
         tags:
             - { name: knp.twig_explorer.name_resolver }
 
-    knp.twig_explorer.name.trans_token_resolver:
-        class: %knp.twig_explorer.name.trans_token_resolver.class%
+    knp.twig_explorer.name.token_parser_resolver:
+        class: %knp.twig_explorer.name.token_parser_resolver.class%
         tags:
             - { name: knp.twig_explorer.name_resolver }
