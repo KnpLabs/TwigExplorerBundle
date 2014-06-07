@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/KnpLabs/TwigExplorerBundle.svg?branch=master)](https://travis-ci.org/KnpLabs/TwigExplorerBundle)
+
 Installation:
 =============
 ####Composer
