@@ -1,0 +1,3 @@
+#phpspec.yml
+extensions:
+    - Knp\PhpSpec\WellDone\Extension

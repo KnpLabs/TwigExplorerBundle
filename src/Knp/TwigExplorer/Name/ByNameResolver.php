@@ -3,13 +3,15 @@
 namespace Knp\TwigExplorer\Name;
 
 use Knp\TwigExplorer\Name\ResolverInterface;
+use \Twig_SimpleFilter;
+use \Twig_SimpleFunction;
 
-class SimpleFilterResolver implements ResolverInterface
+class ByNameResolver implements ResolverInterface
 {
     public function supports($element)
     {
-        return $element instanceof \Twig_SimpleFilter
-            || $element instanceof \Twig_SimpleFunction;
+        return $element instanceof Twig_SimpleFilter
+            || $element instanceof Twig_SimpleFunction;
     }
 
     public function getName($key, $element)

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6d3097713dfdbcc4b3ad15f8be0cf970",
+    "hash": "9f7434d142a46e9619f747c314ff137a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -676,6 +676,47 @@
     ],
     "packages-dev": [
         {
+            "name": "knplabs/phpspec-welldone-extension",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/PhpSpecWellDoneExtension.git",
+                "reference": "678c7441f8b758fabf4a02bdb7663fbab7a60466"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/PhpSpecWellDoneExtension/zipball/678c7441f8b758fabf4a02bdb7663fbab7a60466",
+                "reference": "678c7441f8b758fabf4a02bdb7663fbab7a60466",
+                "shasum": ""
+            },
+            "require": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Knp\\PhpSpec\\WellDone": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Pedrotroller",
+                    "email": "plazanet.pierre@gmail.com",
+                    "homepage": "https://github.com/PedroTroller"
+                }
+            ],
+            "description": "Extension for PHPSPEC. Find out which classes are not specified. ",
+            "time": "2014-03-31 20:54:49"
+        },
+        {
             "name": "phpspec/php-diff",
             "version": "v1.0.2",
             "source": {
@@ -844,7 +885,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "phpspec/phpspec": 20
+        "phpspec/phpspec": 20,
+        "knplabs/phpspec-welldone-extension": 20
     },
     "platform": {
         "php": ">=5.4"

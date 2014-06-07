@@ -16,12 +16,13 @@
         "symfony/symfony": "~2.4"
     },
     "require-dev": {
-        "phpspec/phpspec": "~2@dev"
+        "phpspec/phpspec": "~2@dev",
+        "knplabs/phpspec-welldone-extension": "dev-master"
     },
     "config": {
         "bin-dir": "bin"
     },
     "autoload": {
         "psr-0": { "Knp\\TwigExplorer": "src/" }
-    },
+    }
 }
