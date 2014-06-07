@@ -1,3 +1,61 @@
+Installation:
+=============
+####1) Composer
+```bash
+composer require --dev knplabs/twig-explorer-bundle dev-master
+```
+
+####2.) AppKernel
+```php
+<?php
+
+// app/AppKernel.php
+
+public function registerBundles()
+{
+    $bundles = array(
+
+        // ...
+
+        new Knp\TwigExplorer\KnpTwigExplorer()
+    );
+
+    // ...
+}
+```
+
+Usage
+=====
+
+```bash
+Usage:
+ knp:twig:explorer [query]
+
+Arguments:
+ query                 A query string
+
+Options:
+ --help (-h)           Display this help message.
+ --quiet (-q)          Do not output any message.
+ --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+ --version (-V)        Display this application version.
+ --ansi                Force ANSI output.
+ --no-ansi             Disable ANSI output.
+ --no-interaction (-n) Do not ask any interactive question.
+ --shell (-s)          Launch the shell.
+ --process-isolation   Launch commands from shell as a separate process.
+ --env (-e)            The Environment name. (default: "dev")
+ --no-debug            Switches off debug mode.
+```
+
+List all filters/functions:
+======
+
+####Command:
+```bash
+php app/console knp:twig:explorer
+```
+####Result:
 ```
  Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension : 
  | Functions               | Filters                           | Token Parsers        |
@@ -44,82 +102,78 @@
  |                         | yaml_encode                       |                      |
  |                         | yaml_dump                         |                      |
 
- Symfony\Bridge\Twig\Extension\StopwatchExtension : 
- | Functions               | Filters                           | Token Parsers        |
- |                         |                                   | stopwatch            |
+ #...
 
- Symfony\Bridge\Twig\Extension\ExpressionExtension : 
- | Functions               | Filters                           | Token Parsers        |
- | expression              |                                   |                      |
+```
 
- Symfony\Bridge\Twig\Extension\HttpKernelExtension : 
- | Functions               | Filters                           | Token Parsers        |
- | render                  |                                   |                      |
- | render_*                |                                   |                      |
- | controller              |                                   |                      |
+Search some filters/functions:
+======
+
+####Command:
+```bash
+php app/console knp:twig:explorer form
+```
+####Result:
+```
+ Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension :  None 
+
+ Symfony\Bridge\Twig\Extension\SecurityExtension :  None 
+
+ Symfony\Bridge\Twig\Extension\TranslationExtension :  None 
+
+ Symfony\Bundle\TwigBundle\Extension\AssetsExtension :  None 
+
+ Symfony\Bundle\TwigBundle\Extension\ActionsExtension :  None 
+
+ Symfony\Bridge\Twig\Extension\CodeExtension : 
+ | Functions    | Filters               | Token Parsers |
+ |              | format_args           |               |
+ |              | format_args_as_text   |               |
+ |              | format_file           |               |
+ |              | format_file_from_text |               |
+
+ Symfony\Bridge\Twig\Extension\RoutingExtension :  None 
+
+ Symfony\Bridge\Twig\Extension\YamlExtension :  None 
+
+ Symfony\Bridge\Twig\Extension\StopwatchExtension :  None 
+
+ Symfony\Bridge\Twig\Extension\ExpressionExtension :  None 
+
+ Symfony\Bridge\Twig\Extension\HttpKernelExtension :  None 
 
  Symfony\Bridge\Twig\Extension\FormExtension : 
- | Functions               | Filters                           | Token Parsers        |
- | form_enctype            | humanize                          | form_theme           |
- | form_widget             |                                   |                      |
- | form_errors             |                                   |                      |
- | form_label              |                                   |                      |
- | form_row                |                                   |                      |
- | form_rest               |                                   |                      |
- | form                    |                                   |                      |
- | form_start              |                                   |                      |
- | form_end                |                                   |                      |
- | csrf_token              |                                   |                      |
+ | Functions    | Filters               | Token Parsers |
+ | form_enctype |                       | form_theme    |
+ | form_widget  |                       |               |
+ | form_errors  |                       |               |
+ | form_label   |                       |               |
+ | form_row     |                       |               |
+ | form_rest    |                       |               |
+ | form         |                       |               |
+ | form_start   |                       |               |
+ | form_end     |                       |               |
 
- Twig_Extension_Debug : 
- | Functions               | Filters                           | Token Parsers        |
- | dump                    |                                   |                      |
+ Twig_Extension_Debug :  None 
 
- Symfony\Bundle\AsseticBundle\Twig\AsseticExtension : 
- | Functions               | Filters                           | Token Parsers        |
- |                         |                                   | javascripts          |
- |                         |                                   | stylesheets          |
- |                         |                                   | image                |
+ Symfony\Bundle\AsseticBundle\Twig\AsseticExtension :  None 
 
- Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension : 
- | Functions               | Filters                           | Token Parsers        |
- |                         | doctrine_minify_query             |                      |
- |                         | doctrine_pretty_query             |                      |
- |                         | doctrine_replace_query_parameters |                      |
+ Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension :  None 
 
  Mopa\Bundle\BootstrapBundle\Twig\MopaBootstrapTwigExtension : 
- | Functions               | Filters                           | Token Parsers        |
- | form_help               |                                   |                      |
- | form_tabs               |                                   |                      |
+ | Functions    | Filters               | Token Parsers |
+ | form_help    |                       |               |
+ | form_tabs    |                       |               |
 
- Mopa\Bundle\BootstrapBundle\Navbar\Twig\NavbarExtension : 
- | Functions               | Filters                           | Token Parsers        |
- | mopa_bootstrap_navbar   |                                   |                      |
+ Mopa\Bundle\BootstrapBundle\Navbar\Twig\NavbarExtension :  None 
 
- Knp\RadBundle\Twig\DataTableTwigExtension : 
- | Functions               | Filters                           | Token Parsers        |
- | bootstrap_datatable     | toArray                           |                      |
- | bootstrap_datatable_row | toHeadersArray                    |                      |
+ Knp\RadBundle\Twig\DataTableTwigExtension :  None 
 
- Knp\RadBundle\Twig\FlashExtension : 
- | Functions               | Filters                           | Token Parsers        |
- |                         |                                   | flashes              |
+ Knp\RadBundle\Twig\FlashExtension :  None 
 
- App\Twig\InflectorExtension : 
- | Functions               | Filters                           | Token Parsers        |
- |                         | pluralize                         |                      |
- |                         | tableize                          |                      |
- |                         | camelize                          |                      |
- |                         | underscorize                      |                      |
+ App\Twig\InflectorExtension :  None 
 
- Knp\TwigExplorer\Twig\StringExtension : 
- | Functions               | Filters                           | Token Parsers        |
- |                         | pad                               |                      |
+ Knp\TwigExplorer\Twig\StringExtension :  None 
 
- App\Twig\CountryExtension : 
- | Functions               | Filters                           | Token Parsers        |
- |                         | country                           |                      |
- |                         | locale                            |                      |
-
-
+ App\Twig\CountryExtension :  None 
 ```
