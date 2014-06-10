@@ -20,11 +20,13 @@ class TwigExplorerCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $data = $this->getContainer()->get('knp.twig_explorer.data.compiler')->compile($extensions);
+        $compiler = $this->getContainer()->get('knp.twig_explorer.data.compiler');
         $q = $input->getArgument('query');
 
         if (null !== $q && !empty($q)) {
-            $data = $this->filter($q, $data);
+            $data = $compiler->filter($q, $data);
+        } else {
+            $data = $compiler->compile();
         }
 
         $output->write(
