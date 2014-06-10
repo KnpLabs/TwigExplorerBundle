@@ -5,12 +5,21 @@ parameters:
     knp.twig_explorer.name.by_key_resolver.class: Knp\TwigExplorer\Name\ByKeyResolver
     knp.twig_explorer.name.by_name_resolver.class: Knp\TwigExplorer\Name\ByNameResolver
     knp.twig_explorer.name.token_parser_resolver.class: Knp\TwigExplorer\Name\TokenParserResolver
+    knp.twig_explorer.data.compiler.class: Knp\TwigExplorer\Data\Compiler
+    knp.twig_explorer.data_collector.twig_extension_data_collector.class: Knp\TwigExplorer\DataCollector\TwigExtensionDataCollector
+    knp.twig_explorer.data_collector.twig_extension_data_collector.template: KnpTwigExplorerBundle::display.html.twig
 
 services:
     knp.twig_explorer.twig.string_extension:
         class: %knp.twig_explorer.twig.string_extension.class%
         tags:
             - { name: twig.extension }
+
+    knp.twig_explorer.data.compiler:
+        class: %knp.twig_explorer.data.compiler.class%
+        arguments:
+            - @knp.twig_explorer.twig.extension_container
+            - @knp.twig_explorer.name.resolver_registry
 
     knp.twig_explorer.twig.extension_container:
         class: %knp.twig_explorer.twig.extension_container.class%
@@ -32,3 +41,10 @@ services:
         class: %knp.twig_explorer.name.token_parser_resolver.class%
         tags:
             - { name: knp.twig_explorer.name_resolver }
+
+    knp.twig_explorer.data_collector.twig_extension_data_collector:
+        class: %knp.twig_explorer.data_collector.twig_extension_data_collector.class%
+        arguments:
+            - @knp.twig_explorer.data.compiler
+        tags:
+            - { name: data_collector, template: %knp.twig_explorer.data_collector.twig_extension_data_collector.template%, id: twig }

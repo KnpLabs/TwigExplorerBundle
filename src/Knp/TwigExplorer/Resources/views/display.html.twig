@@ -1,0 +1,45 @@
+{% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+{% block toolbar %}
+{% set icon %}
+<img width="20" height="28" alt="Twig" src="{{ asset('bundles/knptwigexplorer/twig.png') }}" />
+<span class="sf-toolbar-info-piece-additional-detail sf-toolbar-status sf-toolbar-status-green">{{ collector.extensions|length }} extensions</span>
+{% endset %}
+{% include 'WebProfilerBundle:Profiler:toolbar_item.html.twig' with { 'link': profiler_url } %}
+{% endblock %}
+
+
+{% block menu %}
+<span class="label">
+<span class="icon">
+<img width="26" height="28" alt="Twig" src="{{ asset('bundles/knptwigexplorer/twig.png') }}" />
+</span>
+<strong>Twig Extensions</strong>
+{% endblock %}
+
+{% block panel %}
+<h2>Twig Extensions</h2>
+{% for extension, parts in collector.extensions %}
+<h3> {{ extension }} </h3>
+<table>
+{% set max = 0 %}
+    <thead>
+        <tr>
+        {% for part, data in parts %}
+            {% set max = (data|length > max) ? (data|length) : max %}
+            <th style="width:{{ 100/(parts|length) }}%">{{ part|title }}</th>
+        {% endfor %}
+        <tr/>
+    </thead>
+    <tbody>
+        {% for i in 0..(max-1) %}
+        <tr>
+            {% for part, data in parts %}
+            <td>{{ data[i]|default('') }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+{% endblock %}
