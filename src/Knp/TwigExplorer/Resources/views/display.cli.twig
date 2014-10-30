@@ -1,18 +1,19 @@
 {% set sizes = [] %}
-{% for extension, elements in data %}
-{% for part, names in elements %}
+{% for extension, values in data %}
+{% for part, names in values.parts %}
 {% set sizes = sizes|merge({ (part): ((sizes[part]|default(0) > part|length) ? (sizes[part]|default(0)) : part|length) }) %}
 {% for name in names %}
 {% set sizes = sizes|merge({ (part): ((sizes[part]|default(0) > name|length) ? (sizes[part]|default(0)) : name|length) }) %}
 {% endfor %}
 {% endfor %}
 {% endfor %}
-{% for extension, elements in data %}
+{% for extension, values in data %}
+{% set elements = values.parts %}
 {% set number = 0 %}
 {% for part, names in elements %}
 {% set number = number > names|length ? number : names|length %}
 {% endfor %}
-<fg=black;bg=white> {{ extension }} : </fg=black;bg=white>{% if number == 0 %}<error> None </error>{% endif %}
+<fg=black;bg=white> {{ extension }} ({{ values.service }}) : </fg=black;bg=white>{% if number == 0 %}<error> None </error>{% endif %}
 {% if number > 0 %}
 {% set line = '' %}
 {% for part, names in elements %}{% set line = line ~ ' | ' ~ part|pad(sizes[part]) %}{% endfor %}

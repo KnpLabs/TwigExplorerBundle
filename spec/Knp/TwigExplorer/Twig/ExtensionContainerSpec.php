@@ -14,15 +14,15 @@ class ExtensionContainerSpec extends ObjectBehavior
 
     function it_register_extensions(\Twig_Extension $extension, \Twig_Extension $extension2)
     {
-        $this->addExtension($extension);
+        $this->addExtension($extension, 'ext1');
         $this->getExtensions()->shouldReturn([
-            $extension
+            'ext1' => $extension
         ]);
 
-        $this->addExtension($extension2);
+        $this->addExtension($extension2, 'ext2');
         $this->getExtensions()->shouldReturn([
-            $extension,
-            $extension2
+            'ext1' => $extension,
+            'ext2' => $extension2
         ]);
     }
 }

@@ -20,28 +20,32 @@ class Compiler
     {
         $data = [];
 
+        foreach ($this->extensions->getExtensionsClasses() as $id => $extension) {
+            $data[$extension]['service'] = $id;
+        }
+
         foreach ($this->extensions->getFilters() as $extension => $filters) {
-            $data[$extension]['filters'] = [];
+            $data[$extension]['parts']['filters'] = [];
             foreach ($filters as $key => $element) {
-                $data[$extension]['filters'][] = $this->resolve($key, $element);
+                $data[$extension]['parts']['filters'][] = $this->resolve($key, $element);
             }
-            $data[$extension]['filters'] = array_values($data[$extension]['filters']);
+            $data[$extension]['parts']['filters'] = array_values($data[$extension]['parts']['filters']);
         }
 
         foreach ($this->extensions->getFunctions() as $extension => $functions) {
-            $data[$extension]['functions'] = [];
+            $data[$extension]['parts']['functions'] = [];
             foreach ($functions as $key => $element) {
-                $data[$extension]['functions'][] = $this->resolve($key, $element);
+                $data[$extension]['parts']['functions'][] = $this->resolve($key, $element);
             }
-            $data[$extension]['functions'] = array_values($data[$extension]['functions']);
+            $data[$extension]['parts']['functions'] = array_values($data[$extension]['parts']['functions']);
         }
 
         foreach ($this->extensions->getTokenParsers() as $extension => $functions) {
-            $data[$extension]['token parsers'] = [];
+            $data[$extension]['parts']['token parsers'] = [];
             foreach ($functions as $key => $element) {
-                $data[$extension]['token parsers'][] = $this->resolve($key, $element);
+                $data[$extension]['parts']['token parsers'][] = $this->resolve($key, $element);
             }
-            $data[$extension]['token parsers'] = array_values($data[$extension]['token parsers']);
+            $data[$extension]['parts']['token parsers'] = array_values($data[$extension]['parts']['token parsers']);
         }
 
         return $data;
@@ -51,14 +55,14 @@ class Compiler
     {
         $data = $data ?: $this->compile();
 
-        foreach ($data as $extension => $elements) {
-            foreach ($elements as $part => $names) {
+        foreach ($data as $extension => $values) {
+            foreach ($values['parts'] as $part => $names) {
                 foreach ($names as $index => $name) {
                     if (false === strpos(strtolower($name), strtolower($q))) {
-                        unset($data[$extension][$part][$index]);
+                        unset($data[$extension]['parts'][$part][$index]);
                     }
                 }
-                $data[$extension][$part] = array_values($data[$extension][$part]);
+                $data[$extension]['parts'][$part] = array_values($data[$extension]['parts'][$part]);
             }
         }
 
