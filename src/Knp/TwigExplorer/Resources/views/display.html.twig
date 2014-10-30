@@ -19,8 +19,10 @@
 
 {% block panel %}
 <h2>Twig Extensions</h2>
-{% for extension, parts in collector.extensions %}
+{% for extension, data in collector.extensions %}
+{% set parts = data.parts %}
 <h3> {{ extension }} </h3>
+<strong>Service:&nbsp;</strong> {{ data.service }}
 <table>
 {% set max = 0 %}
     <thead>

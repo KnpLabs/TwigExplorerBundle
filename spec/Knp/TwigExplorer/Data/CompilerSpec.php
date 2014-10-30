@@ -22,6 +22,7 @@ class CompilerSpec extends ObjectBehavior
         $res2->getName(Argument::any(), Argument::any())->willReturn('form_theme');
         $res3->getName(Argument::any(), Argument::any())->willReturn('dump');
 
+        $extensions->getExtensionsClasses()->willReturn(['ext1' => 'Ext1', 'ext2' => 'Ext2' ]);
         $extensions->getFilters()->willReturn(['Ext1' => [ $ext1 ], 'Ext2' => []]);
         $extensions->getFunctions()->willReturn(['Ext1' => [ $ext3 ], 'Ext2' => [ $ext2 ]]);
         $extensions->getTokenParsers()->willReturn(['Ext1' => [], 'Ext2' => []]);
@@ -36,14 +37,20 @@ class CompilerSpec extends ObjectBehavior
     {
         $this->compile()->shouldReturn([
             'Ext1' => [
-                'filters' => ['form'],
-                'functions' => ['dump'],
-                'token parsers' => []
+                'service' => 'ext1',
+                'parts' => [
+                    'filters' => ['form'],
+                    'functions' => ['dump'],
+                    'token parsers' => [],
+                ]
             ],
             'Ext2' => [
-                'filters' => [],
-                'functions' => ['form_theme'],
-                'token parsers' => []
+                'service' => 'ext2',
+                'parts' => [
+                    'filters' => [],
+                    'functions' => ['form_theme'],
+                    'token parsers' => [],
+                ]
             ],
         ]);
     }
@@ -52,14 +59,20 @@ class CompilerSpec extends ObjectBehavior
     {
         $this->filter('form')->shouldReturn([
             'Ext1' => [
-                'filters' => ['form'],
-                'functions' => [],
-                'token parsers' => []
+                'service' => 'ext1',
+                'parts' => [
+                    'filters' => ['form'],
+                    'functions' => [],
+                    'token parsers' => []
+                ]
             ],
             'Ext2' => [
-                'filters' => [],
-                'functions' => ['form_theme'],
-                'token parsers' => []
+                'service' => 'ext2',
+                'parts' => [
+                    'filters' => [],
+                    'functions' => ['form_theme'],
+                    'token parsers' => []
+                ]
             ],
         ]);
     }

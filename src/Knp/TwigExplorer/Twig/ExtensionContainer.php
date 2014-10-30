@@ -11,9 +11,17 @@ class ExtensionContainer
         return $this->extensions;
     }
 
-    public function addExtension(\Twig_Extension $extension)
+    public function getExtensionsClasses()
     {
-        $this->extensions[] = $extension;
+        return array_combine(
+            array_keys($this->extensions),
+            array_map('get_class', $this->extensions)
+        );
+    }
+
+    public function addExtension(\Twig_Extension $extension, $service)
+    {
+        $this->extensions[$service] = $extension;
     }
 
     public function getFilters()

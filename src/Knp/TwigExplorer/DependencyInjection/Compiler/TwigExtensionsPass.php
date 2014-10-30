@@ -13,7 +13,7 @@ class TwigExtensionsPass implements CompilerPassInterface
         $extensionContainer = $container->getDefinition('knp.twig_explorer.twig.extension_container');
 
         foreach ($container->findTaggedServiceIds('twig.extension') as $id => $service) {
-            $extensionContainer->addMethodCall('addExtension', [ new Reference($id) ]);
+            $extensionContainer->addMethodCall('addExtension', [ new Reference($id), $id ]);
         }
     }
 }
