@@ -24,7 +24,7 @@ class TwigExplorerCommand extends ContainerAwareCommand
         $q = $input->getArgument('query');
 
         if (null !== $q && !empty($q)) {
-            $data = $compiler->filter($q, $data);
+            $data = $compiler->filter($q);
         } else {
             $data = $compiler->compile();
         }
