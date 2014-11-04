@@ -11,7 +11,7 @@ class KnpTwigExplorerBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
-        $container->addCompilerPass(new TwigExtensionsPass);
-        $container->addCompilerPass(new NameResolversPass);
+        $container->addCompilerPass(new TwigExtensionsPass());
+        $container->addCompilerPass(new NameResolversPass());
     }
 }

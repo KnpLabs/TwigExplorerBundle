@@ -2,7 +2,6 @@
 
 namespace Knp\TwigExplorer\Name;
 
-use Knp\TwigExplorer\Name\ResolverInterface;
 use \Twig_Filter_Function;
 use \Twig_Filter_Method;
 use \Twig_Function_Method;

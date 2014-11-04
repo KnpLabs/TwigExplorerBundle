@@ -3,7 +3,6 @@
 namespace spec\Knp\TwigExplorer\Twig;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class StringExtensionSpec extends ObjectBehavior
 {

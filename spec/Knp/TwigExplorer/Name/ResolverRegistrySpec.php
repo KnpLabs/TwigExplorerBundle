@@ -4,7 +4,6 @@ namespace spec\Knp\TwigExplorer\Name;
 
 use Knp\TwigExplorer\Name\ResolverInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ResolverRegistrySpec extends ObjectBehavior
 {

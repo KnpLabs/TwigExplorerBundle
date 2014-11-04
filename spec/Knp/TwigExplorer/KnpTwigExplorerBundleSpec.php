@@ -3,7 +3,6 @@
 namespace spec\Knp\TwigExplorer;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class KnpTwigExplorerBundleSpec extends ObjectBehavior
 {
