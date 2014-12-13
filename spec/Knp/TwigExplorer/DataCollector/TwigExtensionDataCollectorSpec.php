@@ -4,7 +4,6 @@ namespace spec\Knp\TwigExplorer\DataCollector;
 
 use Knp\TwigExplorer\Data\Compiler;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class TwigExtensionDataCollectorSpec extends ObjectBehavior
 {

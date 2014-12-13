@@ -3,7 +3,6 @@
 namespace spec\Knp\TwigExplorer\Name;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ByNameResolverSpec extends ObjectBehavior
 {

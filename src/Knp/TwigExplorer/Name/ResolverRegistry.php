@@ -2,8 +2,6 @@
 
 namespace Knp\TwigExplorer\Name;
 
-use Knp\TwigExplorer\Name\ResolverInterface;
-
 class ResolverRegistry
 {
     private $resolvers = [];
@@ -17,7 +15,6 @@ class ResolverRegistry
     {
         foreach ($this->resolvers as $resolver) {
             if ($resolver->supports($element)) {
-
                 return $resolver;
             }
         }
