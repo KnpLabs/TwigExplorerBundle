@@ -26,6 +26,7 @@ class CompilerSpec extends ObjectBehavior
         $extensions->getFilters()->willReturn(['Ext1' => [ $ext1 ], 'Ext2' => []]);
         $extensions->getFunctions()->willReturn(['Ext1' => [ $ext3 ], 'Ext2' => [ $ext2 ]]);
         $extensions->getTokenParsers()->willReturn(['Ext1' => [], 'Ext2' => []]);
+        $extensions->getNodeVisitors()->willReturn(['Ext1' => [], 'Ext2' => []]);
     }
 
     function it_is_initializable()
@@ -42,6 +43,7 @@ class CompilerSpec extends ObjectBehavior
                     'filters' => ['form'],
                     'functions' => ['dump'],
                     'token parsers' => [],
+                    'node visitors' => [],
                 ]
             ],
             'Ext2' => [
@@ -50,6 +52,7 @@ class CompilerSpec extends ObjectBehavior
                     'filters' => [],
                     'functions' => ['form_theme'],
                     'token parsers' => [],
+                    'node visitors' => [],
                 ]
             ],
         ]);
@@ -63,7 +66,8 @@ class CompilerSpec extends ObjectBehavior
                 'parts' => [
                     'filters' => ['form'],
                     'functions' => [],
-                    'token parsers' => []
+                    'token parsers' => [],
+                    'node visitors' => [],
                 ]
             ],
             'Ext2' => [
@@ -71,7 +75,8 @@ class CompilerSpec extends ObjectBehavior
                 'parts' => [
                     'filters' => [],
                     'functions' => ['form_theme'],
-                    'token parsers' => []
+                    'token parsers' => [],
+                    'node visitors' => [],
                 ]
             ],
         ]);

@@ -6,15 +6,25 @@ class ResolverRegistry
 {
     private $resolvers = [];
 
+    /**
+     * @param ResolverInterface $resolver
+     */
     public function addResolver(ResolverInterface $resolver)
     {
         $this->resolvers[] = $resolver;
     }
 
+    /**
+     * @param mixed $element
+     *
+     * @throw \Exception
+     *
+     * @return ResolverInterface
+     */
     public function getResolver($element)
     {
         foreach ($this->resolvers as $resolver) {
-            if ($resolver->supports($element)) {
+            if (true === $resolver->supports($element)) {
                 return $resolver;
             }
         }

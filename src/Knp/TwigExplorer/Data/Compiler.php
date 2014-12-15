@@ -7,53 +7,58 @@ use Knp\TwigExplorer\Twig\ExtensionContainer;
 
 class Compiler
 {
+    /**
+     * @var ExtensionContainer $extensions
+     */
     private $extensions;
+
+    /**
+     * @var ResolverRegistry $resolvers
+     */
     private $resolvers;
 
+    /**
+     * @param ExtensionContainer $extensions
+     * @param ResolverRegistry $resolvers
+     */
     public function __construct(ExtensionContainer $extensions, ResolverRegistry $resolvers)
     {
         $this->extensions = $extensions;
         $this->resolvers  = $resolvers;
     }
 
+    /**
+     * Compile twig extensions data into an array
+     *
+     * @return array
+     */
     public function compile()
     {
-        $data = [];
+        $data = array();
 
         foreach ($this->extensions->getExtensionsClasses() as $id => $extension) {
             $data[$extension]['service'] = $id;
         }
 
-        foreach ($this->extensions->getFilters() as $extension => $filters) {
-            $data[$extension]['parts']['filters'] = [];
-            foreach ($filters as $key => $element) {
-                $data[$extension]['parts']['filters'][] = $this->resolve($key, $element);
-            }
-            $data[$extension]['parts']['filters'] = array_values($data[$extension]['parts']['filters']);
-        }
-
-        foreach ($this->extensions->getFunctions() as $extension => $functions) {
-            $data[$extension]['parts']['functions'] = [];
-            foreach ($functions as $key => $element) {
-                $data[$extension]['parts']['functions'][] = $this->resolve($key, $element);
-            }
-            $data[$extension]['parts']['functions'] = array_values($data[$extension]['parts']['functions']);
-        }
-
-        foreach ($this->extensions->getTokenParsers() as $extension => $functions) {
-            $data[$extension]['parts']['token parsers'] = [];
-            foreach ($functions as $key => $element) {
-                $data[$extension]['parts']['token parsers'][] = $this->resolve($key, $element);
-            }
-            $data[$extension]['parts']['token parsers'] = array_values($data[$extension]['parts']['token parsers']);
-        }
+        $data = $this->compilePart($data, 'filters', 'getFilters');
+        $data = $this->compilePart($data, 'functions', 'getFunctions');
+        $data = $this->compilePart($data, 'token parsers', 'getTokenParsers');
+        $data = $this->compilePart($data, 'node visitors', 'getNodeVisitors');
 
         return $data;
     }
 
+    /**
+     * Filter data
+     *
+     * @param string $q
+     * @param array|null $data
+     *
+     * @return array
+     */
     public function filter($q, array $data = null)
     {
-        $data = $data ?: $this->compile();
+        $data = null !== $data ? $data : $this->compile();
 
         foreach ($data as $extension => $values) {
             foreach ($values['parts'] as $part => $names) {
@@ -69,7 +74,33 @@ class Compiler
         return $data;
     }
 
-    protected function resolve($key, $element)
+    /**
+     * @param array $data
+     * @param string $part
+     * @param string $method
+     *
+     * @return array
+     */
+    private function compilePart(array $data, $part, $method)
+    {
+        foreach ($this->extensions->$method() as $extension => $functions) {
+            $data[$extension]['parts'][$part] = array();
+            foreach ($functions as $key => $element) {
+                $data[$extension]['parts'][$part][] = $this->resolve($key, $element);
+            }
+            $data[$extension]['parts'][$part] = array_values($data[$extension]['parts'][$part]);
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $element
+     *
+     * @return string
+     */
+    private function resolve($key, $element)
     {
         $resolver = $this->resolvers->getResolver($element);
 
