@@ -160,3 +160,8 @@ php app/console knp:twig:explorer form
 
  App\Twig\CountryExtension :  None 
 ```
+
+Profiler
+========
+
+<img src="doc/images/profiler.png" />
