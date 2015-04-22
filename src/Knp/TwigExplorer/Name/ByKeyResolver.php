@@ -9,6 +9,9 @@ use \Twig_Function_Node;
 
 class ByKeyResolver implements ResolverInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function supports($element)
     {
         return $element instanceof Twig_Filter_Method
@@ -17,6 +20,9 @@ class ByKeyResolver implements ResolverInterface
             || $element instanceof Twig_Function_Method;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName($key, $element)
     {
         return $key;

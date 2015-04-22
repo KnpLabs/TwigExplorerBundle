@@ -7,13 +7,13 @@ class StringExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            'pad' => new \Twig_Filter_Method($this, 'pad')
+            new \Twig_SimpleFilter('pad', array($this, 'pad'))
         ];
     }
 
-    public function pad($str, $pad_length , $pad_string = " ", $pad_type = STR_PAD_RIGHT)
+    public function pad($str, $padLength , $padString = ' ', $padType = STR_PAD_RIGHT)
     {
-        return str_pad($str, $pad_length , $pad_string, $pad_type);
+        return str_pad($str, $padLength, $padString, $padType);
     }
 
     public function getName()

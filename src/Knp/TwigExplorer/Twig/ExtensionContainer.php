@@ -4,7 +4,7 @@ namespace Knp\TwigExplorer\Twig;
 
 class ExtensionContainer
 {
-    private $extensions = [];
+    private $extensions = array();
 
     public function getExtensions()
     {
@@ -26,7 +26,7 @@ class ExtensionContainer
 
     public function getFilters()
     {
-        $filters = [];
+        $filters = array();
 
         foreach ($this->extensions as $extension) {
             $filters[get_class($extension)] = $extension->getFilters();
@@ -37,7 +37,7 @@ class ExtensionContainer
 
     public function getFunctions()
     {
-        $functions = [];
+        $functions = array();
 
         foreach ($this->extensions as $extension) {
             $functions[get_class($extension)] = $extension->getFunctions();
@@ -48,12 +48,23 @@ class ExtensionContainer
 
     public function getTokenParsers()
     {
-        $parsers = [];
+        $parsers = array();
 
         foreach ($this->extensions as $extension) {
             $parsers[get_class($extension)] = $extension->getTokenParsers();
         }
 
         return $parsers;
+    }
+
+    public function getNodeVisitors()
+    {
+        $visitors = array();
+
+        foreach ($this->extensions as $extension) {
+            $visitors[get_class($extension)] = $extension->getNodeVisitors();
+        }
+
+        return $visitors;
     }
 }
