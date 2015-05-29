@@ -23,7 +23,7 @@ class TwigExtensionDataCollector extends DataCollector
 
     public function getName()
     {
-        return 'twig';
+        return 'twig_explorer';
     }
 
     public function getExtensions()
