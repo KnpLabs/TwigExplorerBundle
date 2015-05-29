@@ -22,7 +22,7 @@ services:
         arguments:
             - @knp.twig_explorer.data.compiler
         tags:
-            - { name: data_collector, template: %knp.twig_explorer.data_collector.twig_extension_data_collector.template%, id: twig }
+            - { name: data_collector, template: %knp.twig_explorer.data_collector.twig_extension_data_collector.template%, id: twig_explorer }
 
     knp.twig_explorer.name.by_key_resolver:
         class: %knp.twig_explorer.name.by_key_resolver.class%
