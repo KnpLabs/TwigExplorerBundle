@@ -2,10 +2,10 @@
 
 namespace Knp\TwigExplorer\Name;
 
-use \Twig_Filter_Function;
-use \Twig_Filter_Method;
-use \Twig_Function_Method;
-use \Twig_Function_Node;
+use Twig_Filter_Function;
+use Twig_Filter_Method;
+use Twig_Function_Method;
+use Twig_Function_Node;
 
 class ByKeyResolver implements ResolverInterface
 {

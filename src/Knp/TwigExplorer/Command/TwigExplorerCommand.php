@@ -41,7 +41,7 @@ class TwigExplorerCommand extends ContainerAwareCommand
     }
 
     /**
-     * @param string $template
+     * @param string  $template
      * @param mixed[] $context
      *
      * @return string

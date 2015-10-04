@@ -7,13 +7,13 @@ interface ResolverInterface
     /**
      * @param mixed $element
      *
-     * @return boolean
+     * @return bool
      */
     public function supports($element);
 
     /**
      * @param string $key
-     * @param mixed $element
+     * @param mixed  $element
      *
      * @return string
      */

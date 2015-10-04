@@ -8,18 +8,18 @@ use Knp\TwigExplorer\Twig\ExtensionContainer;
 class Compiler
 {
     /**
-     * @var ExtensionContainer $extensions
+     * @var ExtensionContainer
      */
     private $extensions;
 
     /**
-     * @var ResolverRegistry $resolvers
+     * @var ResolverRegistry
      */
     private $resolvers;
 
     /**
      * @param ExtensionContainer $extensions
-     * @param ResolverRegistry $resolvers
+     * @param ResolverRegistry   $resolvers
      */
     public function __construct(ExtensionContainer $extensions, ResolverRegistry $resolvers)
     {
@@ -28,7 +28,7 @@ class Compiler
     }
 
     /**
-     * Compile twig extensions data into an array
+     * Compile twig extensions data into an array.
      *
      * @return array
      */
@@ -49,9 +49,9 @@ class Compiler
     }
 
     /**
-     * Filter data
+     * Filter data.
      *
-     * @param string $q
+     * @param string     $q
      * @param array|null $data
      *
      * @return array
@@ -75,7 +75,7 @@ class Compiler
     }
 
     /**
-     * @param array $data
+     * @param array  $data
      * @param string $part
      * @param string $method
      *
@@ -96,7 +96,7 @@ class Compiler
 
     /**
      * @param string $key
-     * @param mixed $element
+     * @param mixed  $element
      *
      * @return string
      */

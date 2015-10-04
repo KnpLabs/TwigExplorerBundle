@@ -2,8 +2,6 @@
 
 namespace Knp\TwigExplorer\Name;
 
-use Knp\TwigExplorer\Name\ResolverInterface;
-
 class VisitorResolver implements ResolverInterface
 {
     /**

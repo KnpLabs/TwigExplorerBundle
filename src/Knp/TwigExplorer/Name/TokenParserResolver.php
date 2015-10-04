@@ -2,7 +2,7 @@
 
 namespace Knp\TwigExplorer\Name;
 
-use \Twig_TokenParserInterface;
+use Twig_TokenParserInterface;
 
 class TokenParserResolver implements ResolverInterface
 {
