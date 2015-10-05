@@ -2,8 +2,8 @@
 
 namespace Knp\TwigExplorer\Name;
 
-use \Twig_SimpleFilter;
-use \Twig_SimpleFunction;
+use Twig_SimpleFilter;
+use Twig_SimpleFunction;
 
 class ByNameResolver implements ResolverInterface
 {

@@ -13,7 +13,7 @@ class NameResolversPass implements CompilerPassInterface
         $extensionContainer = $container->getDefinition('knp.twig_explorer.name.resolver_registry');
 
         foreach ($container->findTaggedServiceIds('knp.twig_explorer.name_resolver') as $id => $service) {
-            $extensionContainer->addMethodCall('addResolver', [ new Reference($id) ]);
+            $extensionContainer->addMethodCall('addResolver', [new Reference($id)]);
         }
     }
 }
