@@ -18,7 +18,7 @@ public function registerBundles()
 
         // ...
 
-        new Knp\TwigExplorer\KnpTwigExplorer()
+        new Knp\TwigExplorer\KnpTwigExplorerBundle()
     );
 
     // ...
