@@ -1,12 +1,15 @@
 [![Build Status](https://travis-ci.org/KnpLabs/TwigExplorerBundle.svg?branch=master)](https://travis-ci.org/KnpLabs/TwigExplorerBundle)
 
-Installation:
-=============
-####Composer
+# Installation
+
+## Composer
+
 ```bash
 composer require --dev knplabs/twig-explorer-bundle dev-master
 ```
-####AppKernel
+
+## AppKernel
+
 ```php
 <?php
 
@@ -24,8 +27,9 @@ public function registerBundles()
     // ...
 }
 ```
-Usage
-=====
+
+# Usage
+
 ```bash
 Usage:
  knp:twig:explorer [query]
@@ -34,13 +38,16 @@ Arguments:
  query                 A query string
 ```
 
-List all filters/functions:
-======
-####Command
+## List all filters/functions:
+
+### Command
+
 ```bash
 php app/console knp:twig:explorer
 ```
-####Result
+
+### Result
+
 ```
  Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension : 
  | Functions               | Filters                           | Token Parsers        |
@@ -90,13 +97,17 @@ php app/console knp:twig:explorer
  #...
 
 ```
-Search some filters/functions:
-======
-####Command
+
+## Search some filters/functions
+
+### Command
+
 ```bash
 php app/console knp:twig:explorer form
 ```
-####Result
+
+### Result
+
 ```
  Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension :  None 
 
@@ -161,7 +172,6 @@ php app/console knp:twig:explorer form
  App\Twig\CountryExtension :  None 
 ```
 
-Profiler
-========
+## Profiler
 
 <img src="doc/images/profiler.png" />
